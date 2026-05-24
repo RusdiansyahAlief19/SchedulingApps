@@ -1,0 +1,18 @@
+{
+  "name": "penjadwalananca",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "sync:classroom": "tsx scripts/sync-classroom.ts",
+    "sync:brone": "tsx scripts/sync-brone.ts"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.4",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3"
+  }
+}
+
