@@ -100,7 +100,7 @@ export async function syncClassroomTasks(userId: string) {
 
         let deadline = null;
         if (work.dueDate) {
-          const year = work.dueDate.year;
+          const year = work.dueDate.year || new Date().getFullYear();
           const month = work.dueDate.month || 1;
           const day = work.dueDate.day || 1;
           const hours = work.dueTime?.hours || 23;
