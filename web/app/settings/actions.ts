@@ -10,7 +10,7 @@ export async function saveBroneCredentials(formData: FormData) {
   const password = formData.get("password") as string;
 
   if (!nim || !password) {
-    return { error: "NIM dan Password harus diisi" };
+    throw new Error("NIM dan Password harus diisi");
   }
 
   const supabase = getSupabaseAdminClient();
@@ -26,9 +26,8 @@ export async function saveBroneCredentials(formData: FormData) {
 
   if (error) {
     console.error("Failed to save Brone credentials:", error);
-    return { error: "Gagal menyimpan kredensial" };
+    throw new Error("Gagal menyimpan kredensial");
   }
 
   revalidatePath("/settings");
-  return { success: true };
 }
