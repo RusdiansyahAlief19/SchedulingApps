@@ -9,13 +9,14 @@ export async function scrapeSiamSchedule(nim: string, password: string) {
       ? await chromium.executablePath()
       : undefined;
       
+    // @ts-ignore
     const puppeteerModule = isProduction ? puppeteer : (await import('puppeteer')).default;
 
     browser = await puppeteerModule.launch({
       args: isProduction ? chromium.args : [],
-      defaultViewport: chromium.defaultViewport,
+      defaultViewport: { width: 1280, height: 720 },
       executablePath: executablePath,
-      headless: isProduction ? chromium.headless : true,
+      headless: true,
     });
 
     const page = await browser.newPage();

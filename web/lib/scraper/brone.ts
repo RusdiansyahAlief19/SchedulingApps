@@ -14,13 +14,14 @@ export async function scrapeBroneSchedule(nim: string, password: string) {
       : undefined; // Puppeteer will use its bundled Chromium locally
       
     // Dynamically import standard puppeteer for local dev if not production
+    // @ts-ignore
     const puppeteerModule = isProduction ? puppeteer : (await import('puppeteer')).default;
 
     browser = await puppeteerModule.launch({
       args: isProduction ? chromium.args : [],
-      defaultViewport: chromium.defaultViewport,
+      defaultViewport: { width: 1280, height: 720 },
       executablePath: executablePath,
-      headless: isProduction ? chromium.headless : true,
+      headless: true,
     });
 
     const page = await browser.newPage();
